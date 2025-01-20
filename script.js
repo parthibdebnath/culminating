@@ -231,7 +231,7 @@ async function playInstructionVideo() {
     if (model) {
         processFrame();
     } else {
-        console.log("https://teachablemachine.withgoogle.com/models/CMBhs4EAW/");
+        console.log("https://teachablemachine.withgoogle.com/models/T42wbvZhq/");
     }
 }
 
