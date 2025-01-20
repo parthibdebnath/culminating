@@ -34,5 +34,16 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
   <script src="script.js"></script>
+     <div class="color-picker">
+        <input type="color" id="backgroundColorPicker" title="Pick a background color">
+    </div>
+
+    <script>
+        const colorPicker = document.getElementById('backgroundColorPicker');
+
+        colorPicker.addEventListener('input', (event) => {
+            document.body.style.backgroundColor = event.target.value;
+        });
+    </script>
 </body>
 </html>
