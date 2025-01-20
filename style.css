@@ -108,3 +108,8 @@ canvas {
             cursor: pointer;
             border-radius: 50%;
         }
+.color-text{
+position: fixed;
+bottom: 20px;
+ right: 55px;
+}
