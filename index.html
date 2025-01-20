@@ -34,7 +34,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
   <script src="script.js"></script>
      <div class="color-picker">
-        <input type="color" id="backgroundColorPicker" title="Pick a background color">
+        <input type="color" id="backgroundColorPicker">
     </div>
     <div class="color-text"><h3>Change Color -></h3></div>
     <script>
@@ -43,6 +43,7 @@
         colorPicker.addEventListener('input', (event) => {
             document.body.style.backgroundColor = event.target.value;
           document.head.style.backgroundColor = event.target.value;
+          document.style.backgroundColor = event.target.value;
         });
     </script>
 </body>
