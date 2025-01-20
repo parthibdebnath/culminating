@@ -259,3 +259,48 @@ function stopWebcam() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 }
+
+
+//newly added
+
+const poseImages = {
+    pose1: 'pose1.png',
+    pose2: 'pose2.png',
+    pose3: 'pose3.png',
+    pose4: 'pose4.png',
+    pose5: 'pose5.png'
+};
+
+let lastPose = null; 
+async function predict() {
+    try {
+        const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+        const prediction = await model.predict(posenetOutput);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+            checkPose(prediction[i]);
+        }
+
+        drawPose(pose, explosionActive);
+    } catch (error) {
+        console.error("Error in predict:", error);
+    }
+}
+function checkPose(prediction) {
+    const prob = prediction.probability;
+    const poseName = prediction.className.toLowerCase();
+
+    if (prob > 0.8 && poseImages[poseName]) {
+        if (poseName !== lastPose) {
+            lastPose = poseName;
+            updatePoseImage(poseImages[poseName]);
+        }
+    }
+}
+function updatePoseImage(imageSrc) {
+    const poseImage = document.getElementById('pose-image');
+    poseImage.src = imageSrc;
+    poseImage.style.display = 'block';
+}
